@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  color: #0f172a;
+  background: #fffaf0;
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.text-slate-650 {
+  color: #475569;
+}
+
+.shadow-soft {
+  box-shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
+}
+
+.shadow-lift {
+  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.13);
+}
+
+.bg-hero-pattern {
+  background:
+    linear-gradient(115deg, rgba(255, 250, 240, 0.9), rgba(255, 250, 240, 0.62)),
+    radial-gradient(circle at 18% 20%, rgba(45, 212, 191, 0.24), transparent 32%),
+    radial-gradient(circle at 72% 10%, rgba(125, 211, 252, 0.28), transparent 30%),
+    radial-gradient(circle at 78% 48%, rgba(251, 191, 36, 0.12), transparent 25%),
+    radial-gradient(circle at 12% 70%, rgba(251, 146, 60, 0.12), transparent 24%),
+    linear-gradient(135deg, #fffaf0 0%, #effdf8 46%, #fff7ed 100%);
+}
+
+.bg-cream-panel {
+  background: linear-gradient(135deg, #fff7ed 0%, #ecfeff 100%);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  padding: 0.95rem 1.35rem;
+  font-size: 0.95rem;
+  font-weight: 750;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0f766e 0%, #0891b2 100%);
+  color: white;
+  box-shadow: 0 16px 35px rgba(13, 148, 136, 0.24);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #0e7490 0%, #fb7185 100%);
+}
+
+.btn-secondary {
+  border: 1px solid rgba(8, 145, 178, 0.18);
+  background: rgba(255, 255, 255, 0.7);
+  color: #0f172a;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  border-color: rgba(13, 148, 136, 0.34);
+  background: white;
+}
+
+.btn-light {
+  width: fit-content;
+  background: #cffafe;
+  color: #0f172a;
+  box-shadow: 0 18px 35px rgba(8, 145, 178, 0.18);
+}
+
+.btn-light:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+}
+
+.dashboard-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 2.2rem;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(103, 232, 249, 0.24), transparent 34%),
+    radial-gradient(circle at 84% 16%, rgba(251, 191, 36, 0.14), transparent 28%),
+    linear-gradient(145deg, #12343b 0%, #102033 55%, #0f766e 100%);
+  box-shadow: 0 30px 90px rgba(8, 47, 73, 0.24);
+}
+
+.dashboard-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.dashboard-shell > * {
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-light {
+    width: 100%;
+  }
+}
