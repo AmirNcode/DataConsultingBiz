@@ -150,7 +150,7 @@ function Header({ mobileOpen, setMobileOpen }) {
             <ChartNoAxesCombined size={20} />
           </span>
           <span>
-            <span className="block text-sm font-semibold uppercase tracking-[0.22em] text-teal-700">GrowthLens</span>
+            <span className="block text-sm font-semibold uppercase tracking-[0.22em] text-teal-700">Data Fort</span>
             <span className="block text-xs font-medium text-slate-500">Retail & Wellness Intelligence</span>
           </span>
         </a>
@@ -418,9 +418,8 @@ function SampleDashboard() {
                 <button
                   key={key}
                   onClick={() => setActive(key)}
-                  className={`inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold transition ${
-                    active === key ? dashboardThemes[key].tab : "text-slate-300 hover:bg-white/10 hover:text-white"
-                  }`}
+                  className={`inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold transition ${active === key ? dashboardThemes[key].tab : "text-slate-300 hover:bg-white/10 hover:text-white"
+                    }`}
                 >
                   <TabIcon size={16} />
                   {item.label}
@@ -535,9 +534,8 @@ function PricingCard({ icon: Icon, name, line, text, features, featured }) {
   return (
     <motion.article
       whileHover={{ y: -8 }}
-      className={`relative h-full rounded-[2rem] p-6 shadow-soft ${
-        featured ? "bg-[#102033] text-white ring-4 ring-cyan-100/70" : "border border-slate-200 bg-white text-slate-950"
-      }`}
+      className={`relative h-full rounded-[2rem] p-6 shadow-soft ${featured ? "bg-[#102033] text-white ring-4 ring-cyan-100/70" : "border border-slate-200 bg-white text-slate-950"
+        }`}
     >
       {featured && (
         <span className="absolute right-6 top-6 rounded-full bg-amber-200 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-950">
@@ -593,7 +591,7 @@ function Footer() {
             <span className="grid size-10 place-items-center rounded-2xl bg-gradient-to-br from-teal-600 to-sky-500 text-white">
               <ChartNoAxesCombined size={20} />
             </span>
-            <span className="font-bold text-slate-950">GrowthLens Analytics</span>
+            <span className="font-bold text-slate-950">Data Fort Analytics</span>
           </div>
           <p className="mt-3 max-w-xl text-sm leading-6 text-slate-600">
             Retail & Wellness Intelligence for small businesses that want clearer decisions, stronger retention, and smarter growth.
@@ -620,9 +618,8 @@ function Section({ id, eyebrow, title, children }) {
       <div className="mx-auto max-w-7xl">
         <FadeIn className="mb-10 max-w-3xl">
           <p
-            className={`font-bold uppercase text-teal-700 ${
-              id === "problem" ? "text-2xl tracking-[0.18em] sm:text-3xl" : "text-sm tracking-[0.24em]"
-            }`}
+            className={`font-bold uppercase text-teal-700 ${id === "problem" ? "text-2xl tracking-[0.18em] sm:text-3xl" : "text-sm tracking-[0.24em]"
+              }`}
           >
             {eyebrow}
           </p>

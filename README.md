@@ -1,6 +1,6 @@
-# GrowthLens Analytics Landing Page
+# Data Fort Intelligence Landing Page
 
-Modern React landing page for a boutique business intelligence and analytics consulting agency serving pharmacies, beauty/wellness businesses, and retail/e-commerce brands.
+Modern Astro landing page for a boutique business intelligence and analytics consulting agency serving pharmacies, beauty/wellness businesses, and retail/e-commerce brands.
 
 ## Run locally
 
@@ -17,8 +17,5 @@ npm run build
 
 ## Tech
 
-- React
-- Vite
+- Astro
 - Tailwind CSS
-- Framer Motion
-- lucide-react

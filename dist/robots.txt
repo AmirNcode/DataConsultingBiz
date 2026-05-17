@@ -1,0 +1,7 @@
+# robots.txt — Veylor Advisory
+# Allows all crawlers full access and points to the sitemap.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://exhibitionsgate.com/sitemap-index.xml
