@@ -31,8 +31,10 @@ const navItems = [
   { label: "Services", href: "#services" },
   { label: "Industries", href: "#industries" },
   { label: "How It Works", href: "#dashboard" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "#intake" },
 ];
+
+const CALENDLY_URL = "https://calendly.com/amir-dev21/30min";
 
 const dashboardThemes = {
   pharmacy: {
@@ -162,7 +164,7 @@ function Header({ mobileOpen, setMobileOpen }) {
           ))}
         </div>
         <a
-          href="#contact"
+          href="#intake"
           className="hidden rounded-full bg-gradient-to-r from-teal-600 to-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-900/15 transition hover:-translate-y-0.5 hover:from-teal-700 hover:to-rose-400 lg:inline-flex"
         >
           Book a Discovery Call
@@ -201,19 +203,44 @@ function Header({ mobileOpen, setMobileOpen }) {
 
 function Hero() {
   return (
-    <section id="top" className="relative min-h-screen overflow-hidden bg-hero-pattern pt-28">
+    <section id="top" className="relative overflow-hidden bg-hero-pattern pt-24 lg:pt-28">
       <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.24),transparent_55%)]" />
-      <div className="mx-auto max-w-7xl px-5 pb-16 pt-10 lg:px-8 lg:pb-24 lg:pt-20">
+      <div aria-hidden="true" className="hero-line-chart">
+        <svg viewBox="0 0 1200 520" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="hero-chart-gradient" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="#0891b2" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="#0891b2" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path className="hero-chart-grid" d="M80 80H1120M80 190H1120M80 300H1120M80 410H1120" />
+          <path
+            className="hero-chart-fill"
+            d="M80 390C170 330 220 358 302 280C384 202 470 240 548 178C632 112 710 160 788 124C880 82 944 148 1024 94C1070 64 1100 58 1120 54V460H80Z"
+          />
+          <path
+            className="hero-chart-line"
+            d="M80 390C170 330 220 358 302 280C384 202 470 240 548 178C632 112 710 160 788 124C880 82 944 148 1024 94C1070 64 1100 58 1120 54"
+          />
+          <g className="hero-chart-dots">
+            <circle cx="302" cy="280" r="9" />
+            <circle cx="548" cy="178" r="9" />
+            <circle cx="788" cy="124" r="9" />
+            <circle cx="1024" cy="94" r="9" />
+          </g>
+        </svg>
+      </div>
+      <div className="mx-auto max-w-7xl px-5 pb-20 pt-10 lg:px-8 lg:pb-24 lg:pt-16">
         <FadeIn className="relative z-10 max-w-4xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-900/10 bg-white/75 px-4 py-2 text-sm font-semibold text-teal-800 shadow-sm">
             <Sparkles size={16} />
             Retail & Wellness Intelligence
           </div>
           <h1 className="max-w-4xl text-5xl font-bold leading-[1.02] text-slate-950 sm:text-6xl lg:text-7xl">
-            Most businesses have the data - they just don't know how to use it.
+            Most small businesses have the data - they just don't know how to use it.
           </h1>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="#contact" className="btn-primary">
+            <a href="#intake" className="btn-primary">
               Book a Discovery Call
               <ArrowRight size={18} />
             </a>
@@ -278,7 +305,7 @@ function ProblemSection() {
   ];
 
   return (
-    <Section id="problem" eyebrow="The gap" title="Most small businesses have the data - they just do not have the time to use it.">
+    <Section id="problem" eyebrow="The gap" title="The problem is not missing data. It is scattered, buried, and hard to act on.">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {problems.map((problem, index) => (
           <FadeIn key={problem.title} delay={index * 0.08}>
@@ -313,7 +340,7 @@ function IndustriesSection() {
   ];
 
   return (
-    <Section id="industries" eyebrow="Industries served" title="Built for customer-focused businesses">
+    <Section id="industries" eyebrow="Industries served" title="We have experience in these industries">
       <div className="grid gap-5 lg:grid-cols-3">
         {industries.map((industry, index) => (
           <FadeIn key={industry.title} delay={index * 0.1}>
@@ -332,7 +359,6 @@ function IndustryCard({ icon: Icon, title, kpis, insights }) {
         <span className="grid size-14 place-items-center rounded-3xl bg-cyan-50 text-teal-700 transition group-hover:bg-teal-600 group-hover:text-white">
           <Icon size={24} />
         </span>
-        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Focus</span>
       </div>
       <h3 className="mt-6 text-2xl font-bold text-slate-950">{title}</h3>
       <p className="mt-3 text-sm font-semibold leading-6 text-teal-700">{kpis}</p>
@@ -376,7 +402,7 @@ function ServicesSection() {
   ];
 
   return (
-    <Section id="services" eyebrow="Services" title="Analytics support without the complexity">
+    <Section id="services" eyebrow="Services" title="We offer these services">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {services.map((service, index) => (
           <FadeIn key={service.title} delay={index * 0.08}>
@@ -389,6 +415,38 @@ function ServicesSection() {
 }
 
 function SampleDashboard() {
+  const steps = [
+    "Explore current setup",
+    "Determine a solution",
+    "Build and validate",
+    "Hand over and train",
+    "Continued support",
+  ];
+
+  return (
+    <section id="dashboard" className="px-5 py-16 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-7xl">
+        <FadeIn className="mb-10 max-w-3xl">
+          <p className="text-sm font-bold uppercase tracking-[0.24em] text-teal-700">How it works</p>
+          <h2 className="mt-3 text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">What the process looks like</h2>
+        </FadeIn>
+        <div className="grid gap-4 lg:grid-cols-5">
+          {steps.map((step, index) => (
+            <FadeIn key={step} delay={index * 0.08}>
+              <div className="h-full rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft">
+                <p className="text-sm font-bold text-teal-700">{String(index + 1).padStart(2, "0")}.</p>
+                <h3 className="mt-5 text-xl font-bold leading-tight text-slate-950">{step}</h3>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Keep this interactive dashboard preview for later use; it is intentionally not rendered right now.
+function HiddenInteractiveDashboardPreview() {
   const [active, setActive] = useState("pharmacy");
   const profile = dashboardProfiles[active];
   const theme = dashboardThemes[active];
@@ -561,22 +619,98 @@ function PricingCard({ icon: Icon, name, line, text, features, featured }) {
 }
 
 function FinalCta() {
+  const [submitStatus, setSubmitStatus] = useState("idle");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setSubmitStatus("submitting");
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      window.location.href = CALENDLY_URL;
+    } catch {
+      setSubmitStatus("error");
+    }
+  };
+
   return (
-    <section id="contact" className="px-5 py-20 lg:px-8 lg:py-28">
-      <FadeIn className="mx-auto max-w-6xl overflow-hidden rounded-[2.2rem] bg-gradient-to-br from-[#102033] via-teal-900 to-sky-800 p-8 text-white shadow-2xl shadow-sky-950/20 sm:p-12 lg:p-16">
-        <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-100">Discovery call</p>
-            <h2 className="mt-4 max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">Want to see what your business data is telling you?</h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-              Book a short discovery call to understand what you are currently tracking, what is missing, and whether a dashboard could help.
-            </p>
-          </div>
-          <a href="mailto:hello@growthlensanalytics.ca" className="btn-light">
-            Book a Discovery Call
-            <ArrowRight size={18} />
-          </a>
+    <section id="intake" className="px-5 py-20 lg:px-8 lg:py-28">
+      <FadeIn className="mx-auto grid max-w-6xl gap-8 rounded-[2.2rem] border border-slate-200 bg-white p-6 shadow-lift sm:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:p-10">
+        <div className="rounded-[1.7rem] bg-gradient-to-br from-[#102033] via-teal-900 to-sky-800 p-7 text-white sm:p-9">
+          <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-100">Discovery call</p>
+          <h2 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">Start with a short intake.</h2>
+          <p className="mt-5 text-base leading-7 text-slate-300">
+            Share a few details about your business first. After you submit, you will go straight to the calendar to book a time.
+          </p>
         </div>
+        <form
+          name="discovery-intake"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+          className="grid gap-5"
+        >
+          <input type="hidden" name="form-name" value="discovery-intake" />
+          <p className="hidden">
+            <label>
+              Do not fill this out if you are human: <input name="bot-field" tabIndex="-1" autoComplete="off" />
+            </label>
+          </p>
+          <div className="grid gap-5 sm:grid-cols-2">
+            <label className="grid gap-2 text-sm font-semibold text-slate-700">
+              <span>Name <span className="text-teal-700" aria-hidden="true">*</span><span className="sr-only">required</span></span>
+              <input className="form-field" type="text" name="name" autoComplete="name" required />
+            </label>
+            <label className="grid gap-2 text-sm font-semibold text-slate-700">
+              <span>Email <span className="text-teal-700" aria-hidden="true">*</span><span className="sr-only">required</span></span>
+              <input className="form-field" type="email" name="email" autoComplete="email" required />
+            </label>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2">
+            <label className="grid gap-2 text-sm font-semibold text-slate-700">
+              Business name
+              <input className="form-field" type="text" name="business-name" autoComplete="organization" />
+            </label>
+            <label className="grid gap-2 text-sm font-semibold text-slate-700">
+              <span>Industry <span className="text-teal-700" aria-hidden="true">*</span><span className="sr-only">required</span></span>
+              <select className="form-field" name="industry" defaultValue="" required>
+                <option value="" disabled>
+                  Select an industry
+                </option>
+                <option value="pharmacy">Pharmacy</option>
+                <option value="retail-ecommerce">Retail & E-commerce</option>
+                <option value="beauty-wellness">Beauty & Wellness</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+          </div>
+          <label className="grid gap-2 text-sm font-semibold text-slate-700">
+            Analytics goals and challenges
+            <textarea
+              className="form-field min-h-32 resize-y"
+              name="analytics-goals-and-challenges"
+              placeholder="Tell us what is hard to track today, what reports you already use, or what decisions you want more clarity on."
+            />
+          </label>
+          {submitStatus === "error" && (
+            <p className="rounded-2xl bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
+              Something went wrong submitting the form. Please try again.
+            </p>
+          )}
+          <button type="submit" className="btn-primary justify-self-start" disabled={submitStatus === "submitting"}>
+            {submitStatus === "submitting" ? "Submitting..." : "Submit and Book a Call"}
+            <ArrowRight size={18} />
+          </button>
+        </form>
       </FadeIn>
     </section>
   );
