@@ -60,28 +60,16 @@ a {
   height: 100%;
 }
 
-.hero-chart-grid {
-  fill: none;
-  stroke: rgba(14, 116, 144, 0.055);
-  stroke-width: 1;
-}
-
 .hero-chart-fill {
   fill: url("#hero-chart-gradient");
-  opacity: 0.32;
+  opacity: 0.5;
 }
 
 .hero-chart-line {
   fill: none;
-  stroke: rgba(8, 145, 178, 0.1);
+  stroke: rgba(8, 145, 178, 0.095);
   stroke-linecap: round;
   stroke-width: 7;
-}
-
-.hero-chart-dots {
-  fill: rgba(13, 148, 136, 0.08);
-  stroke: rgba(255, 255, 255, 0.3);
-  stroke-width: 3;
 }
 
 .bg-cream-panel {

@@ -152,7 +152,7 @@ function Header({ mobileOpen, setMobileOpen }) {
             <ChartNoAxesCombined size={20} />
           </span>
           <span>
-            <span className="block text-sm font-semibold uppercase tracking-[0.22em] text-teal-700">Data Fort</span>
+            <span className="block text-sm font-bold text-slate-950">Data Fort</span>
             <span className="block text-xs font-medium text-slate-500">Retail & Wellness Intelligence</span>
           </span>
         </a>
@@ -209,11 +209,11 @@ function Hero() {
         <svg viewBox="0 0 1200 520" preserveAspectRatio="none">
           <defs>
             <linearGradient id="hero-chart-gradient" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor="#0891b2" stopOpacity="0.1" />
-              <stop offset="100%" stopColor="#0891b2" stopOpacity="0" />
+              <stop offset="0%" stopColor="#0891b2" stopOpacity="0.08" />
+              <stop offset="70%" stopColor="#fffaf0" stopOpacity="0.28" />
+              <stop offset="100%" stopColor="#fffaf0" stopOpacity="0" />
             </linearGradient>
           </defs>
-          <path className="hero-chart-grid" d="M80 80H1120M80 190H1120M80 300H1120M80 410H1120" />
           <path
             className="hero-chart-fill"
             d="M80 390C170 330 220 358 302 280C384 202 470 240 548 178C632 112 710 160 788 124C880 82 944 148 1024 94C1070 64 1100 58 1120 54V460H80Z"
@@ -222,12 +222,6 @@ function Hero() {
             className="hero-chart-line"
             d="M80 390C170 330 220 358 302 280C384 202 470 240 548 178C632 112 710 160 788 124C880 82 944 148 1024 94C1070 64 1100 58 1120 54"
           />
-          <g className="hero-chart-dots">
-            <circle cx="302" cy="280" r="9" />
-            <circle cx="548" cy="178" r="9" />
-            <circle cx="788" cy="124" r="9" />
-            <circle cx="1024" cy="94" r="9" />
-          </g>
         </svg>
       </div>
       <div className="mx-auto max-w-7xl px-5 pb-20 pt-10 lg:px-8 lg:pb-24 lg:pt-16">
@@ -725,13 +719,13 @@ function Footer() {
             <span className="grid size-10 place-items-center rounded-2xl bg-gradient-to-br from-teal-600 to-sky-500 text-white">
               <ChartNoAxesCombined size={20} />
             </span>
-            <span className="font-bold text-slate-950">Data Fort Analytics</span>
+            <span className="font-bold text-slate-950">Data Fort</span>
           </div>
           <p className="mt-3 max-w-xl text-sm leading-6 text-slate-600">
             Retail & Wellness Intelligence for small businesses that want clearer decisions, stronger retention, and smarter growth.
           </p>
           <a className="mt-3 inline-block text-sm font-semibold text-teal-700" href="mailto:hello@growthlensanalytics.ca">
-            hello@growthlensanalytics.ca
+            hello@datafort.ca
           </a>
         </div>
         <div className="flex flex-wrap gap-4">
