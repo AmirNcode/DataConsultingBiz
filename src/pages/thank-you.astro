@@ -7,13 +7,19 @@ const description = "Your Data Fort inquiry has been received.";
 ---
 
 <BaseLayout title={title} description={description} canonicalPath="/thank-you/" noindex={true}>
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content={`0; url=${site.calendlyUrl}`} />
+    <script is:inline define:vars={{ calendlyUrl: site.calendlyUrl }}>
+      window.location.replace(calendlyUrl);
+    </script>
+  </Fragment>
   <section class="page-hero">
     <div class="container narrow">
       <p class="breadcrumb"><a href="/">Home</a> / Thank you</p>
       <h1>Thank you</h1>
-      <p>Your inquiry has been received. Data Fort will review your details and reply personally.</p>
+      <p>Your inquiry has been received. You are being redirected to Calendly to choose a time.</p>
       <div class="hero-actions">
-        <a class="button button-primary" href={site.calendlyUrl}>Book a Discovery Call</a>
+        <a class="button button-primary" href={site.calendlyUrl}>Continue to Calendly</a>
         <a class="button button-secondary" href="/">Return Home</a>
       </div>
     </div>

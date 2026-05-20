@@ -50,6 +50,7 @@ const jsonLd = [...defaultStructuredData, ...structuredData];
     <meta name="theme-color" content="#0f766e" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {jsonLd.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -65,7 +66,7 @@ const jsonLd = [...defaultStructuredData, ...structuredData];
         <nav class="nav" aria-label="Main navigation">
           {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
         </nav>
-        <a class="header-cta" href={site.calendlyUrl}>Book a Discovery Call</a>
+        <a class="header-cta" href="/#contact">Get in touch</a>
       </div>
     </header>
     <main id="main-content">
