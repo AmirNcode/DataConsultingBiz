@@ -44,8 +44,10 @@ const structuredData = [
       <div class="card-grid">
         {locations.map((location) => (
           <article class="card">
-            <h3>{location}</h3>
-            <p>Business intelligence services, dashboard reporting services, and monthly business reporting for small businesses near {location}.</p>
+            <div class="card-body">
+              <h3>{location}</h3>
+              <p>Business intelligence services, dashboard reporting services, and monthly business reporting for small businesses near {location}.</p>
+            </div>
           </article>
         ))}
       </div>
@@ -62,8 +64,10 @@ const structuredData = [
         <div class="card-grid">
           {serviceLinks.map((item) => (
             <article class="card">
-              <h3><a href={item.href}>{item.title}</a></h3>
-              <p>{item.description}</p>
+              <a class="card-link" href={item.href}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </a>
             </article>
           ))}
         </div>
@@ -76,8 +80,10 @@ const structuredData = [
         <div class="card-grid">
           {industryLinks.map((item) => (
             <article class="card">
-              <h3><a href={item.href}>{item.title}</a></h3>
-              <p>{item.description}</p>
+              <a class="card-link" href={item.href}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </a>
             </article>
           ))}
         </div>

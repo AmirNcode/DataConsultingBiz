@@ -9,8 +9,10 @@ const { items, eyebrow, title } = Astro.props;
     <div class="card-grid">
       {items.map((item) => (
         <article class="card">
-          <h3><a href={item.href}>{item.title}</a></h3>
-          <p>{item.description}</p>
+          <a class="card-link" href={item.href}>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </a>
         </article>
       ))}
     </div>
