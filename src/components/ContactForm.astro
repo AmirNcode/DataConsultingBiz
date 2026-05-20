@@ -1,0 +1,48 @@
+---
+const { compact = false } = Astro.props;
+---
+
+<form
+  class={compact ? "contact-form contact-form-compact" : "contact-form"}
+  name="lead-capture"
+  method="POST"
+  action="/thank-you/"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+>
+  <p class="screen-reader-only">
+    <label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+  </p>
+  <input type="hidden" name="form-name" value="lead-capture" />
+  <label>
+    Name
+    <input type="text" name="name" autocomplete="name" required />
+  </label>
+  <label>
+    Work email
+    <input type="email" name="email" autocomplete="email" required />
+  </label>
+  <label>
+    Business name
+    <input type="text" name="business-name" autocomplete="organization" />
+  </label>
+  <label>
+    Industry
+    <select name="industry" required>
+      <option value="">Select an industry</option>
+      <option value="independent-pharmacy">Independent pharmacy</option>
+      <option value="retail-ecommerce">Retail or e-commerce</option>
+      <option value="beauty-wellness">Beauty or wellness clinic</option>
+      <option value="other">Other small business</option>
+    </select>
+  </label>
+  <label class="wide">
+    What do you want to understand better?
+    <textarea
+      name="reporting-goals"
+      rows="5"
+      placeholder="Examples: customer retention, inventory reporting, sales reporting, refill retention, rebooking, margins, monthly business reporting."
+    ></textarea>
+  </label>
+  <button class="button button-primary" type="submit">Submit Inquiry</button>
+</form>

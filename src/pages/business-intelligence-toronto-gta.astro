@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Cta from "../components/Cta.astro";
+import { industryLinks, locations, serviceLinks, site } from "../data/site.js";
+
+const title = "Business Intelligence Services Toronto GTA | Data Fort";
+const description =
+  "Business intelligence services Toronto and GTA small businesses can use for dashboards, KPI reporting, monthly business insights, retention analysis, sales reporting, inventory reporting, and margin visibility.";
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Data Fort",
+    url: site.url,
+    email: site.email,
+    areaServed: locations.map((name) => ({ "@type": "City", name })),
+    serviceType: "Business intelligence services GTA",
+    description,
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/business-intelligence-toronto-gta/" structuredData={structuredData}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> / Toronto GTA</p>
+      <p class="eyebrow">Business intelligence services GTA</p>
+      <h1>Business intelligence services Toronto and GTA small businesses can use every month</h1>
+      <p>
+        Data Fort provides business intelligence services Toronto and Greater Toronto Area owners can use to make clearer decisions from their existing data. The service supports independent pharmacies, retail and e-commerce stores, and beauty and wellness clinics with dashboards, KPI reporting, monthly business insights, customer retention analysis, sales reporting, inventory reporting, refill retention, rebooking, product performance, and margin visibility.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Service area</p>
+        <h2>Serving Toronto and nearby communities</h2>
+        <p>
+          Data Fort works with small businesses in Toronto, North York, Richmond Hill, Thornhill, Vaughan, Newmarket, Markham, Etobicoke, Scarborough, and the Greater Toronto Area. The work can begin with the reports, exports, and spreadsheets your team already uses.
+        </p>
+      </div>
+      <div class="card-grid">
+        {locations.map((location) => (
+          <article class="card">
+            <div class="card-body">
+              <h3>{location}</h3>
+              <p>Business intelligence services, dashboard reporting services, and monthly business reporting for small businesses near {location}.</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container two-grid">
+      <div>
+        <div class="section-intro">
+          <p class="eyebrow">Services</p>
+          <h2>What Data Fort helps with</h2>
+        </div>
+        <div class="card-grid">
+          {serviceLinks.map((item) => (
+            <article class="card">
+              <a class="card-link" href={item.href}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div class="section-intro">
+          <p class="eyebrow">Industries</p>
+          <h2>Who Data Fort supports</h2>
+        </div>
+        <div class="card-grid">
+          {industryLinks.map((item) => (
+            <article class="card">
+              <a class="card-link" href={item.href}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Cta title="Looking for a data analytics consultant Toronto small businesses can understand?" />
+</BaseLayout>

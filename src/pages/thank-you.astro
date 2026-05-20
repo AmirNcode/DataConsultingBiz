@@ -1,75 +1,27 @@
 ---
-/**
- * thank-you.astro — Post-submission confirmation page.
- *
- * Shown after a successful Netlify form submission. Confirms
- * receipt and sets expectations for a personal response.
- * noIndex is true — we don't want search engines indexing this.
- */
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../data/site';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site.js";
 
-const seo = {
-  title: `Thank You | ${site.name}`,
-  description: 'Your inquiry has been received. We will review your setup and reply personally.',
-  canonicalPath: '/thank-you',
-  noIndex: true,
-};
+const title = "Thank You | Data Fort";
+const description = "Your Data Fort inquiry has been received.";
 ---
 
-<BaseLayout seo={seo}>
-  <section class="thankyou section" aria-labelledby="thankyou-heading">
-    <div class="thankyou__inner container">
-      <div class="thankyou__icon" aria-hidden="true">
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-          <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2"/>
-          <path d="M20 33l8 8 16-16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+<BaseLayout title={title} description={description} canonicalPath="/thank-you/" noindex={true}>
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content={`0; url=${site.calendlyUrl}`} />
+    <script is:inline define:vars={{ calendlyUrl: site.calendlyUrl }}>
+      window.location.replace(calendlyUrl);
+    </script>
+  </Fragment>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="breadcrumb"><a href="/">Home</a> / Thank you</p>
+      <h1>Thank you</h1>
+      <p>Your inquiry has been received. You are being redirected to Calendly to choose a time.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href={site.calendlyUrl}>Continue to Calendly</a>
+        <a class="button button-secondary" href="/">Return Home</a>
       </div>
-      <h1 class="thankyou__heading" id="thankyou-heading">
-        Thank you — we got your message
-      </h1>
-      <p class="thankyou__text">
-        We'll review your details and get in touch with you within 1 business day.
-      </p>
-      <a href="/" class="btn btn-primary thankyou__cta">
-        Back to homepage
-      </a>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .thankyou {
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-  }
-
-  .thankyou__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 540px;
-    margin-inline: auto;
-  }
-
-  .thankyou__icon {
-    color: var(--color-accent);
-    margin-bottom: var(--space-6);
-  }
-
-  .thankyou__heading {
-    font-size: var(--text-3xl);
-    margin-bottom: var(--space-4);
-  }
-
-  .thankyou__text {
-    font-size: var(--text-lg);
-    color: var(--color-text-muted);
-    line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-8);
-    max-width: 100%;
-  }
-</style>

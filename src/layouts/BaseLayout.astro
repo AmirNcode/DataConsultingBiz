@@ -1,59 +1,107 @@
 ---
-/**
- * BaseLayout.astro — Root layout wrapping every page.
- *
- * Provides the HTML shell, imports global CSS, renders the SeoHead,
- * Header, Footer, and a skip-to-content link for accessibility.
- * Individual pages pass SEO props and optional JSON-LD schemas.
- */
-import SeoHead from '../components/SeoHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import type { SeoProps } from '../utils/seo';
-import '../styles/global.css';
+import "../styles.css";
+import { absoluteUrl, faqs, navigation, serviceLinks, industryLinks, site } from "../data/site.js";
 
-interface Props {
-  seo: SeoProps;
-  schemas?: Record<string, unknown>[];
-}
+const {
+  title,
+  description = site.description,
+  canonicalPath = Astro.url.pathname,
+  noindex = false,
+  structuredData = [],
+} = Astro.props;
 
-const { seo, schemas = [] } = Astro.props;
+const canonicalUrl = absoluteUrl(canonicalPath);
+const pageTitle = title ?? `${site.name} | Business Intelligence Services`;
+const socialImage = absoluteUrl("/og-image.svg");
+const defaultStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.name,
+    url: site.url,
+    email: site.email,
+    description: site.description,
+  },
+];
+const jsonLd = [...defaultStructuredData, ...structuredData];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <SeoHead seo={seo} schemas={schemas} />
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="theme-color" content="#0f766e" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {jsonLd.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+    <slot name="head" />
+  </head>
   <body>
-    <!-- Skip link for keyboard / screen-reader users -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <Header />
-
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Data Fort home">
+          <span class="brand-mark" aria-hidden="true">DF</span>
+          <span>
+            <span class="brand-name">Data Fort</span>
+            <span class="brand-line">Business Intelligence for Small Business</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+        <a class="header-cta" href="/#contact">Get in touch</a>
+      </div>
+    </header>
     <main id="main-content">
       <slot />
     </main>
-
-    <Footer />
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="/" aria-label="Data Fort home">
+            <span class="brand-mark" aria-hidden="true">DF</span>
+            <span class="brand-name">Data Fort</span>
+          </a>
+          <p>
+            Business intelligence services for small businesses in {site.serviceArea}.
+          </p>
+          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        </div>
+        <div>
+          <h2>Services</h2>
+          <ul>
+            {serviceLinks.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <h2>Industries</h2>
+          <ul>
+            {industryLinks.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+            <li><a href="/business-intelligence-toronto-gta/">Toronto GTA Service Area</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Data Fort. All rights reserved.</span>
+        <a href="/privacy/">Privacy Policy</a>
+      </div>
+    </footer>
   </body>
 </html>
-
-<style>
-  /* Skip-to-content link — invisible until focused via keyboard. */
-  .skip-link {
-    position: absolute;
-    top: -100%;
-    left: var(--space-4);
-    z-index: 1000;
-    padding: var(--space-2) var(--space-4);
-    background-color: var(--color-accent);
-    color: var(--color-text-inverse);
-    border-radius: var(--radius-md);
-    font-weight: var(--weight-semibold);
-    font-size: var(--text-sm);
-    transition: top var(--transition-fast);
-  }
-
-  .skip-link:focus {
-    top: var(--space-4);
-  }
-</style>

@@ -1,40 +1,141 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import CapabilitySection from '../components/CapabilitySection.astro';
-import ProcessSection from '../components/ProcessSection.astro';
-import ExamplesSection from '../components/ExamplesSection.astro';
-import DeliverablesSection from '../components/DeliverablesSection.astro';
-import IdealClientSection from '../components/IdealClientSection.astro';
-import FAQSection from '../components/FAQSection.astro';
-import ContactFormSection from '../components/ContactFormSection.astro';
-import { site } from '../data/site';
-import {
-  getOrganizationSchema,
-  getServiceSchema,
-  getFaqSchema,
-} from '../utils/schema';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CardGrid from "../components/CardGrid.astro";
+import ContactForm from "../components/ContactForm.astro";
+import FAQ from "../components/FAQ.astro";
+import { absoluteUrl, faqs, industryLinks, locations, serviceLinks, site } from "../data/site.js";
 
-const seo = {
-  title: site.defaultTitle,
-  description: site.defaultDescription,
-  canonicalPath: '/',
-};
-
-const schemas = [
-  getOrganizationSchema(),
-  getServiceSchema(),
-  getFaqSchema(),
+const title = "Business Intelligence Services for Small Businesses in Toronto | Data Fort";
+const description =
+  "Data Fort provides business intelligence services for independent pharmacies, retail and e-commerce stores, and beauty/wellness clinics in Toronto and the GTA: dashboards, monthly insights, customer retention, inventory, and sales reporting.";
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Data Fort",
+    url: site.url,
+    email: site.email,
+    description,
+    areaServed: locations.map((name) => ({ "@type": "City", name })),
+    serviceType: [
+      "Business intelligence services for small businesses",
+      "Dashboard reporting services",
+      "Monthly business reporting",
+      "Customer retention analysis",
+      "Sales and inventory reporting",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
 ];
 ---
 
-<BaseLayout seo={seo} schemas={schemas}>
-  <Hero />
-  <IdealClientSection />
-  <CapabilitySection />
-  <ProcessSection />
-  <ExamplesSection />
-  <DeliverablesSection />
-  <FAQSection />
-  <ContactFormSection />
+<BaseLayout title={title} description={description} canonicalPath="/" structuredData={structuredData}>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Business intelligence services Toronto and GTA</p>
+        <h1>Business intelligence services for small businesses in Toronto and the GTA</h1>
+        <p class="lead">
+          Data Fort helps independent pharmacies, locally owned retail and e-commerce stores, and beauty and wellness clinics turn everyday business data into clearer decisions. We provide tool-neutral business intelligence services for small businesses across Toronto, North York, Richmond Hill, Thornhill, Vaughan, Newmarket, Markham, Etobicoke, Scarborough, and the Greater Toronto Area.
+        </p>
+        <p class="lead">
+          The work is practical: dashboards, KPI reporting, monthly business insights, customer retention analysis, sales reporting, inventory reporting, refill retention, rebooking and no-show reporting, product performance, and margin visibility. If your data is spread across point-of-sale systems, booking tools, pharmacy systems, online store exports, accounting files, or spreadsheets, Data Fort helps organize the numbers into reporting that owners and staff can actually use.
+        </p>
+        <aside class="proof-panel" aria-labelledby="metrics-title">
+          <h2 id="metrics-title">What your monthly dashboard can clarify</h2>
+          <div class="metric-list">
+            <div>
+              <strong>Customer retention analysis</strong>
+              <span>Repeat customers, lapsed customers, rebooking, refill behaviour, and loyalty patterns.</span>
+            </div>
+            <div>
+              <strong>Sales and inventory reporting</strong>
+              <span>Sales trends, slow movers, top products, service revenue, stockouts, and margin visibility.</span>
+            </div>
+            <div>
+              <strong>Monthly business reporting</strong>
+              <span>Plain-language insights that explain what changed and what deserves attention next.</span>
+            </div>
+          </div>
+        </aside>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CardGrid eyebrow="Services" title="Business intelligence services built around small business decisions" items={serviceLinks} />
+  <CardGrid eyebrow="Industries" title="Focused support for local owners and operators" items={industryLinks} />
+
+  <section class="section section-muted">
+    <div class="container two-grid">
+      <div class="content-card">
+        <p class="eyebrow">Why Data Fort</p>
+        <h2>Useful reporting starts with the questions owners already have.</h2>
+        <p>
+          Data Fort does not start by forcing a specific tool. The first step is understanding what you need to decide each month: which customers are coming back, which products or services drive profit, where inventory is tying up cash, where staff capacity affects revenue, and which marketing or operational actions deserve attention.
+        </p>
+      </div>
+      <div class="content-card">
+        <p class="eyebrow">Local search fit</p>
+        <h2>Serving small businesses across the GTA.</h2>
+        <p>
+          If you are looking for a business intelligence consultant Toronto owners can work with directly, Data Fort supports Toronto and nearby communities including North York, Richmond Hill, Thornhill, Vaughan, Newmarket, Markham, Etobicoke, and Scarborough.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Common reporting problems</p>
+        <h2>Signals that your business is ready for better BI reporting</h2>
+        <p>
+          Small teams often have the right data but not the time or structure to turn it into answers. These are the situations Data Fort is designed to help with.
+        </p>
+      </div>
+      <ul class="feature-list three-grid">
+        <li>
+          <strong>Reports take too long to assemble</strong>
+          <span>Numbers live in exports, spreadsheets, booking systems, pharmacy systems, or online store reports.</span>
+        </li>
+        <li>
+          <strong>Customer behaviour is hard to see</strong>
+          <span>Owners know retention matters, but repeat purchase, refill, rebooking, and churn patterns are not clear.</span>
+        </li>
+        <li>
+          <strong>Inventory and margins need sharper visibility</strong>
+          <span>Sales totals are visible, but product performance, slow movers, stockouts, and margin trends are not easy to track.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <FAQ items={faqs} />
+
+  <section class="section" id="contact">
+    <div class="container contact-layout">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Send your reporting goals</h2>
+        <p class="lead">
+          Tell Data Fort what is hard to track today. Good starting points include customer retention, monthly business reporting, sales and inventory reporting, pharmacy dashboard reporting, retail analytics services, e-commerce analytics services, beauty clinic analytics, or wellness clinic reporting.
+        </p>
+      </div>
+      <ContactForm />
+    </div>
+  </section>
 </BaseLayout>

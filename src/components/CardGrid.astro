@@ -1,0 +1,20 @@
+---
+const { items, eyebrow, title } = Astro.props;
+---
+
+<section class="section">
+  <div class="container">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2>{title}</h2>
+    <div class="card-grid">
+      {items.map((item) => (
+        <article class="card">
+          <a class="card-link" href={item.href}>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
