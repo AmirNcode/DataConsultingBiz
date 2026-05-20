@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Cta from "../../components/Cta.astro";
+import { industryLinks, locations, site } from "../../data/site.js";
+
+const title = "Dashboard Reporting Services for Small Businesses | Data Fort";
+const description =
+  "Dashboard reporting services and KPI dashboard support for small businesses in Toronto and the GTA, covering sales, retention, inventory, rebooking, refill behaviour, products, services, and margins.";
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Dashboard Reporting Services",
+    provider: { "@type": "Organization", name: "Data Fort", url: site.url },
+    areaServed: locations.map((name) => ({ "@type": "City", name })),
+    serviceType: "Dashboard reporting services",
+    description,
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/services/dashboard-reporting/" structuredData={structuredData}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> / Services</p>
+      <p class="eyebrow">Dashboard reporting services</p>
+      <h1>KPI dashboard for small business decisions, not just prettier charts</h1>
+      <p>
+        Data Fort designs dashboard reporting services around the numbers owners and staff need to review each month. A KPI dashboard for small business should make sales reporting, customer retention analysis, inventory reporting, rebooking, refill retention, product performance, service revenue, and margin visibility easier to understand.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Dashboard scope</p>
+        <h2>Reports that match how the business runs</h2>
+        <p>
+          The goal is not a generic dashboard. The goal is a reporting view that helps a pharmacy owner, retailer, e-commerce operator, clinic manager, or staff lead see what changed and where to act.
+        </p>
+      </div>
+      <ul class="feature-list three-grid">
+        <li>
+          <strong>Revenue and sales reporting</strong>
+          <span>Monthly trends, category performance, product performance, service revenue, and changes worth investigating.</span>
+        </li>
+        <li>
+          <strong>Retention and repeat behaviour</strong>
+          <span>Repeat purchases, refill patterns, lapsed customers, rebooking, no-shows, and loyalty signals.</span>
+        </li>
+        <li>
+          <strong>Inventory and margin visibility</strong>
+          <span>Slow movers, stockout risk, margin by category, product mix, and cash tied up in inventory.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Industry examples</p>
+        <h2>Dashboard reporting by business type</h2>
+      </div>
+      <div class="card-grid">
+        {industryLinks.map((item) => (
+          <article class="card">
+            <h3><a href={item.href}>{item.title}</a></h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Cta title="Want dashboard reporting that makes next steps clearer?" />
+</BaseLayout>

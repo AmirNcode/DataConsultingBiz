@@ -1,0 +1,28 @@
+# Data Fort
+
+Data Fort provides tool-neutral business intelligence services for small businesses in Toronto and the Greater Toronto Area.
+
+## Audience
+
+Data Fort works with independent pharmacies, locally owned retail and e-commerce stores, and beauty and wellness clinics. The ideal reader is a small business owner, operator, manager, or staff lead who wants clearer reporting without building a dedicated data team.
+
+## Services
+
+- Business intelligence services for small businesses: https://datafort.ca/services/business-intelligence/
+- Dashboard reporting services and KPI dashboards: https://datafort.ca/services/dashboard-reporting/
+- Monthly business reporting and plain-language insights: https://datafort.ca/services/monthly-business-insights/
+
+## Industries
+
+- Independent pharmacy analytics and pharmacy business intelligence: https://datafort.ca/industries/independent-pharmacies/
+- Retail analytics services and e-commerce analytics services: https://datafort.ca/industries/retail-ecommerce/
+- Beauty clinic analytics and wellness clinic reporting: https://datafort.ca/industries/beauty-wellness-clinics/
+
+## Service Area
+
+Data Fort serves Toronto, North York, Richmond Hill, Thornhill, Vaughan, Newmarket, Markham, Etobicoke, Scarborough, and the Greater Toronto Area.
+
+## Canonical Site
+
+Homepage: https://datafort.ca/
+Contact: hello@datafort.ca

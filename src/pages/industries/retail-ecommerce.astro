@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Cta from "../../components/Cta.astro";
+import { locations, site } from "../../data/site.js";
+
+const title = "Retail and E-commerce Analytics Services | Data Fort";
+const description =
+  "Retail analytics services and e-commerce analytics services for Toronto and GTA stores, including sales and inventory reporting, repeat customers, product performance, customer retention analysis, and margin visibility.";
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Retail and E-commerce Analytics Services",
+    provider: { "@type": "Organization", name: "Data Fort", url: site.url },
+    areaServed: locations.map((name) => ({ "@type": "City", name })),
+    serviceType: "Retail analytics services",
+    description,
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/industries/retail-ecommerce/" structuredData={structuredData}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> / Industries</p>
+      <p class="eyebrow">Retail analytics services</p>
+      <h1>Retail and e-commerce analytics services for local stores and online sellers</h1>
+      <p>
+        Data Fort helps locally owned retail and e-commerce businesses use sales and inventory reporting, customer retention analysis, product performance reporting, and margin visibility to make clearer decisions. The service is built for owners and staff who need practical business intelligence without a dedicated data team.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container three-grid">
+      <article class="page-card">
+        <h2>Pain points</h2>
+        <ul>
+          <li>Store, online, accounting, and spreadsheet reports do not line up cleanly.</li>
+          <li>Sales totals are visible, but repeat customer and product performance patterns are harder to interpret.</li>
+          <li>Inventory reports show counts, but not always slow movers, stockout risk, or margin impact.</li>
+          <li>Campaign or promotion performance is difficult to connect to profitable buyers.</li>
+        </ul>
+      </article>
+      <article class="page-card">
+        <h2>Sample metrics</h2>
+        <ul>
+          <li>Repeat purchase rate, lapsed customers, and customer segments.</li>
+          <li>Top products, slow movers, bundle performance, and category trends.</li>
+          <li>Inventory turnover, stockout risk, and aged inventory.</li>
+          <li>Sales, gross margin, average order value, and channel performance.</li>
+        </ul>
+      </article>
+      <article class="page-card">
+        <h2>Decisions enabled</h2>
+        <ul>
+          <li>Which products should be protected from stockouts before peak periods.</li>
+          <li>Which customers should receive replenishment, loyalty, or win-back offers.</li>
+          <li>Which product categories deserve more buying, merchandising, or promotion attention.</li>
+          <li>Which sales and inventory reporting questions should guide the next month.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container two-grid">
+      <div class="content-card">
+        <p class="eyebrow">Local fit</p>
+        <h2>For retail and e-commerce businesses in Toronto and the GTA</h2>
+        <p>
+          Data Fort supports retail analytics services and e-commerce analytics services for small businesses in Toronto, North York, Richmond Hill, Thornhill, Vaughan, Newmarket, Markham, Etobicoke, and Scarborough.
+        </p>
+      </div>
+      <div class="content-card">
+        <p class="eyebrow">Reporting outcome</p>
+        <h2>A clearer view of products, customers, and margins</h2>
+        <p>
+          Retail and e-commerce analytics should help owners see what is selling, who is coming back, what is tying up cash, and where margin is improving or weakening.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Cta title="Need retail analytics services that connect sales, customers, and inventory?" />
+</BaseLayout>

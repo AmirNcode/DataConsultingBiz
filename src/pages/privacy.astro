@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site.js";
+
+const title = "Privacy Policy | Data Fort";
+const description = "Privacy policy for Data Fort, a business intelligence service for small businesses in Toronto and the GTA.";
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/privacy/">
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="breadcrumb"><a href="/">Home</a> / Privacy</p>
+      <h1>Privacy Policy</h1>
+      <p>Last updated: May 19, 2026</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="page-card">
+        <h2>Information you provide</h2>
+        <p>
+          If you submit a contact form or book a discovery call, Data Fort may receive your name, email address, business name, industry, and the reporting goals or challenges you choose to share.
+        </p>
+
+        <h2>How the information is used</h2>
+        <p>
+          Data Fort uses submitted information to respond to inquiries, understand whether the service is a fit, and prepare for a discovery conversation. Data Fort does not sell your personal information.
+        </p>
+
+        <h2>Third-party services</h2>
+        <p>
+          The site may use hosting and form-handling services, and booking links may send you to Calendly. Those services process information under their own policies.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          For privacy questions, email <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

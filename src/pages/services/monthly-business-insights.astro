@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Cta from "../../components/Cta.astro";
+import { locations, site } from "../../data/site.js";
+
+const title = "Monthly Business Reporting and Insights | Data Fort";
+const description =
+  "Monthly business reporting for small businesses in Toronto and the GTA, with plain-language insights for retention, sales, inventory, service performance, customer behaviour, and margins.";
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Monthly Business Insights",
+    provider: { "@type": "Organization", name: "Data Fort", url: site.url },
+    areaServed: locations.map((name) => ({ "@type": "City", name })),
+    serviceType: "Monthly business reporting",
+    description,
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/services/monthly-business-insights/" structuredData={structuredData}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> / Services</p>
+      <p class="eyebrow">Monthly business reporting</p>
+      <h1>Monthly business insights that explain what changed and what to review next</h1>
+      <p>
+        Data Fort turns recurring reporting into a practical monthly rhythm. Instead of asking staff to interpret disconnected exports, owners get a clearer view of customer retention, sales and inventory reporting, refill retention, rebooking, no-shows, product performance, service revenue, and margin visibility.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-grid">
+      <article class="page-card">
+        <h2>What the monthly readout can cover</h2>
+        <ul>
+          <li>What changed in revenue, product mix, service revenue, or category performance.</li>
+          <li>Which customer, patient, or client retention patterns need attention.</li>
+          <li>Where inventory, margins, staff capacity, or booking patterns are affecting results.</li>
+          <li>Which questions should be reviewed before the next month starts.</li>
+        </ul>
+      </article>
+      <article class="page-card">
+        <h2>Who uses it</h2>
+        <p>
+          Monthly business reporting works well for owners, operators, clinic managers, pharmacy managers, store managers, and staff leads who need a consistent way to review performance without building new reports from scratch every month.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Decision rhythm</p>
+        <h2>From numbers to next steps</h2>
+      </div>
+      <ul class="decision-list three-grid">
+        <li>
+          <strong>Review the key metrics</strong>
+          <span>Start with the dashboard and identify the numbers that moved.</span>
+        </li>
+        <li>
+          <strong>Explain the likely drivers</strong>
+          <span>Connect the movement to customer behaviour, operations, inventory, staffing, or marketing activity.</span>
+        </li>
+        <li>
+          <strong>Choose what to investigate</strong>
+          <span>Turn monthly business insights into a focused list of follow-up questions.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <Cta title="Make monthly business reporting easier to repeat." />
+</BaseLayout>

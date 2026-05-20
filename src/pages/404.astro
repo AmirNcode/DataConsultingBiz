@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Page Not Found | Data Fort";
+const description = "The Data Fort page you are looking for does not exist.";
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/404/" noindex={true}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">404</p>
+      <h1>Page not found</h1>
+      <p>The page you are looking for may have moved. Start from the Data Fort homepage or review the service pages.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="/">Return Home</a>
+        <a class="button button-secondary" href="/services/business-intelligence/">View Services</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

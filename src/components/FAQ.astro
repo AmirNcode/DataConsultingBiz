@@ -1,0 +1,18 @@
+---
+const { items } = Astro.props;
+---
+
+<section class="section section-muted" id="faq">
+  <div class="container narrow">
+    <p class="eyebrow">FAQ</p>
+    <h2>Questions small business owners usually ask</h2>
+    <div class="faq-list">
+      {items.map((item) => (
+        <details>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

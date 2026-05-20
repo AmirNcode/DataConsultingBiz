@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Cta from "../../components/Cta.astro";
+import { locations, serviceLinks, site } from "../../data/site.js";
+
+const title = "Business Intelligence Services for Small Businesses | Data Fort";
+const description =
+  "Tool-neutral business intelligence services for small businesses in Toronto and the GTA, including dashboards, KPI reporting, retention analysis, sales reporting, inventory reporting, and monthly insights.";
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Business Intelligence Services for Small Businesses",
+    provider: { "@type": "Organization", name: "Data Fort", url: site.url },
+    areaServed: locations.map((name) => ({ "@type": "City", name })),
+    serviceType: "Business intelligence services",
+    description,
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/services/business-intelligence/" structuredData={structuredData}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> / Services</p>
+      <p class="eyebrow">Business intelligence services for small businesses</p>
+      <h1>Business intelligence services that turn scattered data into monthly decisions</h1>
+      <p>
+        Data Fort helps small business owners in Toronto and the GTA organize operational data into dashboard reporting, KPI tracking, monthly business reporting, customer retention analysis, sales reporting, inventory reporting, and margin visibility. The service is tool-neutral and designed for independent pharmacies, retail and e-commerce stores, and beauty and wellness clinics.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-grid">
+      <article class="page-card">
+        <h2>What this service includes</h2>
+        <ul>
+          <li>Review of current reports, exports, spreadsheets, and business questions.</li>
+          <li>Definition of the KPIs that matter for ownership and staff decisions.</li>
+          <li>Dashboard structure for revenue, retention, inventory, service performance, and margins.</li>
+          <li>Plain-language insight summaries that connect the numbers to action.</li>
+        </ul>
+      </article>
+      <article class="page-card">
+        <h2>Best-fit business questions</h2>
+        <ul>
+          <li>Which customers or patients are likely to lapse?</li>
+          <li>Which products, services, or categories are driving profitable growth?</li>
+          <li>Where is inventory moving slowly or creating avoidable stockout risk?</li>
+          <li>What should the team review every month before making operational decisions?</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <div class="section-intro">
+        <p class="eyebrow">Related services</p>
+        <h2>Build the right reporting layer one step at a time</h2>
+      </div>
+      <div class="card-grid">
+        {serviceLinks.filter((item) => item.href !== "/services/business-intelligence/").map((item) => (
+          <article class="card">
+            <h3><a href={item.href}>{item.title}</a></h3>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Cta title="Need a business intelligence consultant Toronto small businesses can work with directly?" />
+</BaseLayout>
